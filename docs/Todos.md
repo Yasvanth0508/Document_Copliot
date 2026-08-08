@@ -70,13 +70,13 @@
 
 > Supabase JWT verification so every subsequent endpoint is secured from the start.
 
-- [ ] Create `app/database/supabase.py` — Supabase client factory (user-scoped + admin/service-role)
-- [ ] Create `app/auth/__init__.py`
-- [ ] Create `app/auth/dependencies.py`:
-  - [ ] FastAPI dependency `get_current_user` — extracts `Authorization: Bearer <token>`, verifies with Supabase Auth, returns user object
-  - [ ] Returns 401 on missing/invalid/expired token
-- [ ] Add a test-protected endpoint (e.g. `GET /me`) to verify auth works
-- [ ] Write unit tests for auth dependency (mock Supabase calls)
+- [x] Create `app/database/supabase.py` — Supabase client factory (user-scoped + admin/service-role)
+- [x] Create `app/auth/__init__.py`
+- [x] Create `app/auth/dependencies.py`:
+  - [x] FastAPI dependency `get_current_user` — extracts `Authorization: Bearer <token>`, verifies with Supabase Auth, returns user object
+  - [x] Returns 401 on missing/invalid/expired token
+- [x] Add a test-protected endpoint (e.g. `GET /me`) to verify auth works
+- [x] Write unit tests for auth dependency (mock Supabase calls)
 
 ---
 

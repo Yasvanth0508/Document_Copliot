@@ -1,7 +1,8 @@
 import structlog
-from fastapi import FastAPI
+from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.auth.dependencies import UserContext, get_current_user
 from app.config import settings
 
 logger = structlog.get_logger(__name__)
@@ -25,6 +26,12 @@ app.add_middleware(
 async def health_check() -> dict[str, str]:
     """Health check endpoint for container / load balancer readiness."""
     return {"status": "ok"}
+
+
+@app.get("/me")
+async def get_me(user: UserContext = Depends(get_current_user)) -> dict[str, str]:
+    """Protected endpoint returning the authenticated user's profile info."""
+    return {"id": user.id, "email": user.email}
 
 
 if __name__ == "__main__":
