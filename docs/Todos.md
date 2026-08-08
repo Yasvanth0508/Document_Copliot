@@ -84,26 +84,26 @@
 
 > Turn raw SEC HTML filings into Markdown, chunk them, embed them, and store everything in Supabase.
 
-- [ ] Create `ingest/__init__.py`
-- [ ] Create `ingest/parser.py` — HTML → Markdown extraction
-  - [ ] Strip boilerplate tags, extract text and tables
-  - [ ] Preserve section headers (Item 1, Item 1A, Item 7, Item 8, etc.)
-  - [ ] Store normalized Markdown in `source_documents.markdown_content`
-- [ ] Create `ingest/chunker.py` — split Markdown into retrieval-ready chunks
-  - [ ] Chunk by section/paragraph boundaries, target ~500–800 tokens
-  - [ ] Preserve metadata per chunk: section name, page/offset, ticker, year, form
-  - [ ] Track chunk index for ordering and neighbor lookups
-- [ ] Create `ingest/embedder.py` — Gemini embeddings for each chunk
-  - [ ] Batch embedding calls (Gemini batch embedding API)
-  - [ ] Use model and dimensions from `config.settings` (default: `gemini-embedding-2`, truncated to 768 dims via `output_dimensionality`)
-- [ ] Create `ingest/loader.py` — write to Supabase:
-  - [ ] Insert `source_documents` rows
-  - [ ] Insert `document_chunks` rows with embeddings and metadata
-  - [ ] Generate full-text search vectors
-- [ ] Create `ingest/pipeline.py` — orchestrate: read manifest → parse → chunk → embed → load
-- [ ] Run full ingestion: `uv run python -m ingest.pipeline`
-- [ ] Verify: `document_chunks` table has rows with embeddings and search vectors
-- [ ] Write tests for parser, chunker (no network needed)
+- [x] Create `ingest/__init__.py`
+- [x] Create `ingest/parser.py` — HTML → Markdown extraction
+  - [x] Strip boilerplate tags, extract text and tables
+  - [x] Preserve section headers (Item 1, Item 1A, Item 7, Item 8, etc.)
+  - [x] Store normalized Markdown in `source_documents.markdown_content`
+- [x] Create `ingest/chunker.py` — split Markdown into retrieval-ready chunks
+  - [x] Chunk by section/paragraph boundaries, target ~500–800 tokens
+  - [x] Preserve metadata per chunk: section name, page/offset, ticker, year, form
+  - [x] Track chunk index for ordering and neighbor lookups
+- [x] Create `ingest/embedder.py` — Gemini embeddings for each chunk
+  - [x] Batch embedding calls (Gemini batch embedding API)
+  - [x] Use model and dimensions from `config.settings` (default: `gemini-embedding-2`, truncated to 768 dims via `output_dimensionality`)
+- [x] Create `ingest/loader.py` — write to Supabase:
+  - [x] Insert `source_documents` rows
+  - [x] Insert `document_chunks` rows with embeddings and metadata
+  - [x] Generate full-text search vectors
+- [x] Create `ingest/pipeline.py` — orchestrate: read manifest → parse → chunk → embed → load
+- [x] Run full ingestion: `uv run python -m ingest.pipeline` (Verified pipeline & sample 10-K processing)
+- [x] Verify: `document_chunks` table has rows with embeddings and search vectors
+- [x] Write tests for parser, chunker (no network needed)
 
 ---
 
