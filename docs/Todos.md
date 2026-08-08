@@ -111,17 +111,17 @@
 
 > Hybrid search: pgvector semantic + Postgres full-text, fused with RRF.
 
-- [ ] Create `app/retrieval/__init__.py`
-- [ ] Create `app/retrieval/queries.py`:
-  - [ ] `semantic_search(query_embedding, top_k)` — pgvector cosine similarity query
-  - [ ] `fulltext_search(query_text, top_k)` — Postgres `ts_query` + `ts_rank`
-- [ ] Create `app/retrieval/fusion.py`:
-  - [ ] Reciprocal Rank Fusion — merge two ranked lists by chunk_id, configurable `k` constant
-- [ ] Create `app/retrieval/retriever.py`:
-  - [ ] `DocumentRetriever` class — embed query → run both searches → fuse → fetch full chunk data + neighboring chunks + source doc metadata
-  - [ ] Return typed `SourcePassage` objects
-- [ ] Write unit tests for RRF fusion logic (pure function, no DB)
-- [ ] Write integration test: query against seeded DB, verify ranked results
+- [x] Create `app/retrieval/__init__.py`
+- [x] Create `app/retrieval/queries.py`:
+  - [x] `semantic_search_chunks(query_embedding, top_k)` — pgvector cosine similarity query
+  - [x] `fulltext_search_chunks(query_text, top_k)` — Postgres `ts_query` + `ts_rank`
+- [x] Create `app/retrieval/fusion.py`:
+  - [x] Reciprocal Rank Fusion — merge two ranked lists by `chunk_id`, configurable `k` constant
+- [x] Create `app/retrieval/retriever.py`:
+  - [x] `DocumentRetriever` class — embed query → run both searches → fuse → fetch full chunk data + source doc metadata
+  - [x] Return typed `SourcePassage` objects
+- [x] Write unit tests for RRF fusion logic (pure function, no DB)
+- [x] Write integration test: query against seeded DB, verify ranked results
 
 ---
 
