@@ -11,7 +11,7 @@ This file is the source of truth for any coding agent (Claude Code, Cursor, Code
 - **Retrieval:** Supabase `pgvector` + Postgres full-text search
 - **Auth:** Supabase Auth
 - **Hosting:** Railway (backend service + frontend service)
-- **LLM + embeddings:** OpenAI
+- **LLM + embeddings:** Google Gemini
 
 Stack is locked unless explicitly changed. Don't propose alternatives without a stated reason.
 
@@ -19,12 +19,12 @@ Stack is locked unless explicitly changed. Don't propose alternatives without a 
 
 ```text
 document-copilot/
-├── AGENTS.md           # this file
+├── GEMINI.md           # this file
 ├── README.md
 ├── data/               # local corpus + download script (payloads gitignored)
 ├── docs/               # specs, briefs, design notes
-├── backend/            # FastAPI service (see backend/AGENTS.md)
-└── frontend/           # React SPA (see frontend/AGENTS.md)
+├── backend/            # FastAPI service (see backend/GEMINI.md)
+└── frontend/           # React SPA (see frontend/GEMINI.md)
 ```
 
 ## Dependency policy
@@ -34,7 +34,7 @@ document-copilot/
 OK to depend on:
 
 - Things that are genuinely hard to get right (HTTP clients, ASGI servers, SQL drivers, parsers, LLM SDKs, ORM, migrations, auth SDKs).
-- The declared stack (FastAPI, React, Vite, Supabase clients, OpenAI SDK, etc.).
+- The declared stack (FastAPI, React, Vite, Supabase clients, Google GenAI SDK, etc.).
 
 Not OK:
 
@@ -48,7 +48,7 @@ Before adding a runtime dep, answer in the commit message:
 2. How often does it get used?
 3. What's its maintenance / transitive-dep footprint?
 
-Per-stack specifics live in `backend/AGENTS.md` and `frontend/AGENTS.md`.
+Per-stack specifics live in `backend/GEMINI.md` and `frontend/GEMINI.md`.
 
 ## Configuration
 
